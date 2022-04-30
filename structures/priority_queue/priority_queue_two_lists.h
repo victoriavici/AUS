@@ -90,18 +90,15 @@ namespace structures
 	{
 		if (this != &other)
 		{
-			PriorityQueueTwoLists<T>* otherPQTL = dynamic_cast<PriorityQueueTwoLists<T>*>(&other);
 			clear();
-			for (auto item : *otherPQTL->longList_)
+			PriorityQueueTwoLists<T>* otherQ = dynamic_cast<PriorityQueueTwoLists<T>*>(&other);
+			shortList_->assign(*otherQ->shortList_);
+			for (auto item : *otherQ->longList_)
 			{
 				longList_->add(new PriorityQueueItem<T>(item->getPriority(), item->accessData()));
 
 			}
-
-			shortList_->assign(*otherPQTL->shortList_);
 		}
-		
-
 		return *this;
 	}
 
@@ -127,7 +124,7 @@ namespace structures
 	template<typename T>
 	void PriorityQueueTwoLists<T>::push(int priority, const T& data)
 	{
-		if (longList_->isEmpty() || shortList_->minPriority() > priority)
+		if (longList_->isEmpty() || priority < shortList_->minPriority())
 		{
 			auto item = shortList_->pushAndRemove(priority, data);
 			if (item != nullptr)
@@ -144,36 +141,36 @@ namespace structures
 	template<typename T>
 	T PriorityQueueTwoLists<T>::pop()
 	{
-		auto data = shortList_->pop();
+		auto delI = shortList_->pop();
 		if (shortList_->isEmpty() && !longList_->isEmpty())
 		{
-			int size = sqrt(longList_->size());
-			if (size < 4)
+			int capacity = round(sqrt(longList_->size()));
+			if (capacity < 4)
 			{
 				shortList_->trySetCapacity(4);
 			}
 			else
 			{
-				shortList_->trySetCapacity(size);
+				shortList_->trySetCapacity(capacity);
 			}
-			auto subl = new LinkedList<PriorityQueueItem<T>*>();
+
+			auto pomList = new LinkedList<PriorityQueueItem<T>*>();
 			while (!longList_->isEmpty())
 			{
 				auto item = longList_->removeAt(0);
-
 				if (!shortList_->isEmpty())
 				{
-					if (item->getPriority() < shortList_->minPriority()) {
-						auto fromPush = shortList_->pushAndRemove(item->getPriority(), item->accessData());
-						delete item;
-						if (fromPush != nullptr)
-						{
-							subl->add(fromPush);
-							fromPush = nullptr;
-						}
+					if (item->getPriority() >= shortList_->minPriority()) {
+						pomList->add(item);
 					}
 					else {
-						subl->add(item);
+						auto pomI = shortList_->pushAndRemove(item->getPriority(), item->accessData());
+						delete item;
+						if (pomI != nullptr)
+						{
+							pomList->add(pomI);
+							pomI = nullptr;
+						}
 					}
 				}
 				else {
@@ -182,9 +179,9 @@ namespace structures
 				}
 			}
 			delete longList_;
-			longList_ = subl;
+			longList_ = pomList;
 		}
-		return data;
+		return delI;
 	}
 
 	template<typename T>

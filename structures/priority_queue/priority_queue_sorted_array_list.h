@@ -58,33 +58,23 @@ namespace structures
 	template<typename T>
 	inline void PriorityQueueSortedArrayList<T>::push(int priority, const T& data)
 	{
-		if (PriorityQueueList<T>::list_->isEmpty()) {
+		if (PriorityQueueList<T>::list_->isEmpty() || priority <= PriorityQueueList<T>::peekPriority()) {
 			PriorityQueueList<T>::list_->add(new PriorityQueueItem<T>(priority, data));
 			return;
 		}
-		else {
-			if (priority >= PriorityQueueList<T>::list_->at(0)->getPriority()) {
-			
-				PriorityQueueList<T>::list_->insert(new PriorityQueueItem<T>(priority, data), 0);
-				return;
-			}
-			if (priority <= PriorityQueueList<T>::peekPriority()) {
-				PriorityQueueList<T>::list_->add(new PriorityQueueItem<T>(priority, data));
-				return;
-			}
-
-			int index = 0;
-			for (size_t i = 0; i < PriorityQueueList<T>::list_->size(); i++)
-			{
-				if (PriorityQueueList<T>::list_->at(i)->getPriority() >= priority)
-				{
-					index = i;
-				}
-				
-			}
-			PriorityQueueList<T>::list_->insert(new PriorityQueueItem<T>(priority, data), index);
-
+		if (priority >= PriorityQueueList<T>::list_->at(0)->getPriority()) {		
+			PriorityQueueList<T>::list_->insert(new PriorityQueueItem<T>(priority, data), 0);
+			return;
 		}
+		int index = 0;
+		for (size_t i = 0; i < PriorityQueueList<T>::list_->size(); i++)
+		{
+			if (PriorityQueueList<T>::list_->at(i)->getPriority() >= priority)
+			{
+				index = i;
+			}
+		}
+		PriorityQueueList<T>::list_->insert(new PriorityQueueItem<T>(priority, data), index);
 	}
 
 	template<typename T>

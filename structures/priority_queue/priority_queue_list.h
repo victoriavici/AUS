@@ -94,18 +94,18 @@ namespace structures
     template<typename T>
     inline int PriorityQueueList<T>::indexOfPeek()
     {
-        int bestPrio = INT_MAX;
-        int bestId = -1;
-        int aktId = 0;
+        int najPriorita = INT_MAX;
+        int najIndex = -1;
+        int aktualIndex = 0;
         for (auto item : *list_) {
-            if (item->getPriority() < bestPrio)
+            if (item->getPriority() < najPriorita)
             {
-                bestPrio = item->getPriority();
-                bestId = aktId;
+                najPriorita = item->getPriority();
+                najIndex = aktualIndex;
             }
-            aktId++;
+            aktualIndex++;
         }
-        return bestId;
+        return najIndex;
     }
 
     template<typename T>
@@ -134,7 +134,7 @@ namespace structures
         }
         else
         {
-            throw std::logic_error("Priority Q is empty");
+            throw std::logic_error("Priority Queue is empty");
         }
     }
 
@@ -149,7 +149,7 @@ namespace structures
         }
         else
         {
-            throw std::logic_error("Priority Q is empty");
+            throw std::logic_error("Priorityqueue is empty");
         }
     }
 
@@ -163,7 +163,7 @@ namespace structures
         }
         else
         {
-            throw std::logic_error("Priority Q is empty");
+            throw std::logic_error("Priority Queue is empty");
         }
     }
 }
