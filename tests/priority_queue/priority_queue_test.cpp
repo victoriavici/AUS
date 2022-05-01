@@ -368,7 +368,7 @@ namespace tests
     void Pop::test()
     {
 
-        srand(time(0));
+      srand(time(0));
         for (int k = 0; k < 1000000; k += 1000)
         {
             auto heap = new structures::Heap<int>();
@@ -384,21 +384,25 @@ namespace tests
             structures::Logger::getInstance().logDuration(heap->size(), SimpleTest::getElapsedTime(), "Dåžka trvania heap pop");
             delete heap;
         }
-        for (int k = 0; k < 1000000; k += 1000)
-        {
-            auto two = new structures::PriorityQueueTwoLists<int>();
 
-            for (int i = 0; i <= k; i++)
-            {
-                two->push(i,i);
-            }
+
+        auto two = new structures::PriorityQueueTwoLists<int>();
+        for (int i = 0; i < 100; i++)
+        {
+            two->push(i, i);
+        }
+        for (int k = 100; k < 1000; k++)
+        {
+          
+            two->push(k,k);
             SimpleTest::startStopwatch();
             two->pop();
             SimpleTest::stopStopwatch();
 
             structures::Logger::getInstance().logDuration(two->size(), SimpleTest::getElapsedTime(), "Dåžka trvania PriorityQueueTwoLists pop");
-            delete two;
         }
+        delete two;
+       
     }
     Peek::Peek()
        :SimpleTest("Peek")

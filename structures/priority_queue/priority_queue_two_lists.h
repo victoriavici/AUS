@@ -128,9 +128,7 @@ namespace structures
 		{
 			auto item = shortList_->pushAndRemove(priority, data);
 			if (item != nullptr)
-			{
 				longList_->add(item);
-			}
 		}
 		else
 		{
@@ -177,6 +175,7 @@ namespace structures
 					shortList_->push(item->getPriority(), item->accessData());
 					delete item;
 				}
+			
 			}
 			delete longList_;
 			longList_ = pomList;

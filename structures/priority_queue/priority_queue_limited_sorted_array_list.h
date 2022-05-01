@@ -86,7 +86,7 @@ namespace structures
             PriorityQueueSortedArrayList<T>::push(priority, data);
         }
         else {
-            throw std::logic_error("PriorityQueueLimitedSortedArrayList<T>::push: Front je plny!");
+            throw std::logic_error("PriorityQueueLimitedSortedArrayList je plný");
         }
     }
 
@@ -94,9 +94,9 @@ namespace structures
     inline PriorityQueueItem<T>* PriorityQueueLimitedSortedArrayList<T>::pushAndRemove(int priority, T data)
     {
         if (capacity_ <= PriorityQueueSortedArrayList<T>::list_->size()) {
-            auto item = PriorityQueueSortedArrayList<T>::list_->removeAt(0);
+            auto delI = PriorityQueueSortedArrayList<T>::list_->removeAt(0);
             PriorityQueueSortedArrayList<T>::push(priority, data);
-            return item;
+            return delI;
         }
         else {
             PriorityQueueSortedArrayList<T>::push(priority, data);
@@ -119,11 +119,11 @@ namespace structures
     template<typename T>
     inline bool PriorityQueueLimitedSortedArrayList<T>::trySetCapacity(size_t capacity)
     {
-        if (capacity >= PriorityQueueList<T>::list_->size())
+        if (capacity < PriorityQueueList<T>::list_->size())
         {
-            capacity_ = capacity;
-            return true;
+            return false;
         }
-        return false;
+        capacity_ = capacity;
+        return true;
     }
 }
