@@ -128,7 +128,6 @@
     <ClCompile Include="gui\gui_log_consumer.cpp" />
     <ClCompile Include="gui\main_form.cpp" />
     <ClCompile Include="structures\structure.cpp" />
-    <ClCompile Include="structures\table\sorting\sort.cpp" />
     <ClCompile Include="structures\utils.cpp" />
     <ClCompile Include="structures\vector\vector.cpp" />
     <ClCompile Include="structures\_logger\logger.cpp" />
@@ -137,6 +136,7 @@
     <ClCompile Include="tests\matrix\matrix_test.cpp" />
     <ClCompile Include="tests\priority_queue\priority_queue_test.cpp" />
     <ClCompile Include="tests\queue\queue_test.cpp" />
+    <ClCompile Include="tests\sorting\sorting_test.cpp" />
     <ClCompile Include="tests\stack\stack_test.cpp" />
     <ClCompile Include="tests\stdvector\stdvector_test.cpp" />
     <ClCompile Include="tests\table\table_test.cpp" />
@@ -208,6 +208,7 @@
     <ClInclude Include="tests\matrix\matrix_test.h" />
     <ClInclude Include="tests\priority_queue\priority_queue_test.h" />
     <ClInclude Include="tests\queue\queue_test.h" />
+    <ClInclude Include="tests\sorting\sorting_test.h" />
     <ClInclude Include="tests\stack\stack_test.h" />
     <ClInclude Include="tests\stdvector\stdvector_test.h" />
     <ClInclude Include="tests\table\table_test.h" />

@@ -146,7 +146,7 @@ namespace structures
 	template<typename T>
 	inline BinaryTreeNode<T>* BinaryTreeNode<T>::getParent()
 	{
-		retunr dynamic_cast<BinaryTreeNode<T>*>(TreeNode<T>::getParent());
+		return dynamic_cast<BinaryTreeNode<T>*>(KWayTreeNode<T, 2>::getParent());
 	}
 
 	template<typename T>
@@ -165,24 +165,26 @@ namespace structures
 	inline void BinaryTreeNode<T>::setLeftSon(BinaryTreeNode<T>* leftSon)
 	{
 		KWayTreeNode<T, 2>::insertSon(leftSon, LEFT_SON);
+		//delete KWayTreeNode<T, 2>::replaceSon(leftSon, LEFT_SON);
 	}
 
 	template<typename T>
 	inline void BinaryTreeNode<T>::setRightSon(BinaryTreeNode<T>* rightSon)
 	{
-		KWayTreeNode<T, 2>::insertSon(righttSon, RIGHT_SON);
+		//delete KWayTreeNode<T, 2>::replaceSon(rightSon, RIGHT_SON);
+		KWayTreeNode<T, 2>::insertSon(rightSon, RIGHT_SON);
 	}
 
 	template<typename T>
 	inline BinaryTreeNode<T>* BinaryTreeNode<T>::changeLeftSon(BinaryTreeNode<T>* leftSon)
 	{
-		return dynamic_cast<BinaryTreeNode<T>*>(KwayTreeNode<T, 2>::replaceSon(leftSon,LEFT_SON));
+		return dynamic_cast<BinaryTreeNode<T>*>(KWayTreeNode<T, 2>::replaceSon(leftSon, LEFT_SON));
 	}
 
 	template<typename T>
 	inline BinaryTreeNode<T>* BinaryTreeNode<T>::changeRightSon(BinaryTreeNode<T>* rightSon)
 	{
-		return dynamic_cast<BinaryTreeNode<T>*>(KwayTreeNode<T, 2>::replaceSon(righttSon, RIGHT_SON));
+		return dynamic_cast<BinaryTreeNode<T>*>(KWayTreeNode<T, 2>::replaceSon(rightSon, RIGHT_SON));
 	}
 
 	template<typename T>
@@ -231,7 +233,8 @@ namespace structures
 	template<typename T>
 	inline Iterator<T>* BinaryTree<T>::getBeginIterator()
 	{
-		return new InOrderTreeIterator(getRoot());
+		return new InOrderTreeIterator(Tree<T>::getRoot());
+
 	}
 
 	template<typename T>
@@ -250,17 +253,14 @@ namespace structures
 	template<typename T>
 	inline void BinaryTree<T>::InOrderTreeIterator::populatePath(TreeNode<T>* current)
 	{
-		
-
 		if (current != nullptr) {
-
-			BinaryTreeNode<T>* currentBIN = dynamic_cast<BinaryTreeNode<T>*>(current);
-			populatePath(currentBIN->getLeftSon());
+			auto currentBTN = dynamic_cast<BinaryTreeNode<T>*>(current);
+			populatePath(currentBTN->getLeftSon());
 			TreeIterator::path_->push(current);
-			populatePath(currentBIN->getLeftSon());
+			populatePath(currentBTN->getRightSon());
 		}
-
-		}
+	}
 
 }
+
 

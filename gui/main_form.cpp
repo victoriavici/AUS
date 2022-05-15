@@ -18,6 +18,7 @@
 #include "../file_log_consumer.h"
 #include <crtdbg.h>
 #include <stdlib.h>
+#include "../tests/sorting/sorting_test.h"
 
 using System::String;
 
@@ -36,11 +37,17 @@ void main(array<String^>^)
 	////tests.emplace_back(new tests::Scenar());
 	////tests.emplace_back(new tests::ZlozitostiListy());
 	// Registracia testov:
-	tests.emplace_back(new tests::PriorityQueueTwoListTest());
-	tests.emplace_back(new tests::HeapTestOverall());
-	tests.emplace_back(new tests::ScenareSpustac());
-	tests.emplace_back(new tests::ZlozitostiQueue());
+	//tests.emplace_back(new tests::PriorityQueueTwoListTest());
+	//tests.emplace_back(new tests::HeapTestOverall());
+	//tests.emplace_back(new tests::ScenareSpustac());
+	//tests.emplace_back(new tests::ZlozitostiQueue());
 
+	tests.emplace_back(new tests::TableTest());
+	tests.emplace_back(new tests::ScenareSpustacTable());
+	tests.emplace_back(new tests::ZlozitostiTable());
+
+
+	tests.emplace_back(new tests::SortsTest());
 	//tests.emplace_back(new tests::VectorTestOverall());
 
 	// TODO 02: Array

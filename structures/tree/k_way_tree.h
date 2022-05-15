@@ -114,11 +114,10 @@ namespace structures
 	template<typename T, int K>
 	inline KWayTreeNode<T, K>::~KWayTreeNode()
 	{
-		for (int i = 0; i < K; i++)
+		for (size_t i = 0; i < K; i++)
 		{
 			delete children_->at(i);
 		}
-
 		delete children_;
 		children_ = nullptr;
 	}
@@ -132,8 +131,7 @@ namespace structures
 	template<typename T, int K>
 	inline bool KWayTreeNode<T, K>::isLeaf()
 	{
-		int result = 0;
-		for (int i = 0; i < K; i++)
+		for (size_t i = 0; i < K; i++)
 		{
 			if (children_->at(i) != nullptr)
 				return false;
@@ -145,7 +143,13 @@ namespace structures
 	template<typename T, int K>
 	inline TreeNode<T>* KWayTreeNode<T, K>::getSon(int order)
 	{
-		return children_->at(order);
+		try {
+			return children_->at(order);
+		}
+		catch (...) {
+			throw std::logic_error("Son at index " + std::to_string(order) + " not found in K-way tree!");
+		}
+
 	}
 
 	template<typename T, int K>
@@ -153,7 +157,8 @@ namespace structures
 	{
 		
 		//throw std::runtime_error("KWayTreeNode<T>::insertSon: is not supported!");
-		delete replaceSon(son, order);
+		//delete replaceSon(son, order);
+		replaceSon(son, order);
 	}
 
 	template<typename T, int K>
@@ -182,7 +187,7 @@ namespace structures
 	inline int KWayTreeNode<T, K>::degree()
 	{
 		int result = 0;
-		for (int i = 0; i < K; i++)
+		for (size_t i = 0; i < K; i++)
 		{
 			if (children_->at(i) != nullptr)
 				result++;

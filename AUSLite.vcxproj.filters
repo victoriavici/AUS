@@ -79,6 +79,9 @@
     <Filter Include="tests\queue">
       <UniqueIdentifier>{b773b25c-59b6-46ac-aba5-9991098af28c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests\sorting">
+      <UniqueIdentifier>{857329be-d787-442b-8b34-a09360d530e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gui\main_form.cpp">
@@ -120,9 +123,6 @@
     <ClCompile Include="tests\table\table_test.cpp">
       <Filter>tests\table</Filter>
     </ClCompile>
-    <ClCompile Include="structures\table\sorting\sort.cpp">
-      <Filter>structures\table\sorting</Filter>
-    </ClCompile>
     <ClCompile Include="tests\tree\tree_test.cpp">
       <Filter>tests\tree</Filter>
     </ClCompile>
@@ -137,6 +137,9 @@
     </ClCompile>
     <ClCompile Include="tests\matrix\matrix_test.cpp">
       <Filter>tests\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\sorting\sorting_test.cpp">
+      <Filter>tests\sorting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,36 +248,6 @@
     <ClInclude Include="tests\table\table_test.h">
       <Filter>tests\table</Filter>
     </ClInclude>
-    <ClInclude Include="structures\table\sorting\bubble_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\heap_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\insert_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\merge_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\quick_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\radix_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\select_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\shell_sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\shuffle.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
-    <ClInclude Include="structures\table\sorting\sort.h">
-      <Filter>structures\table\sorting</Filter>
-    </ClInclude>
     <ClInclude Include="tests\tree\tree_test.h">
       <Filter>tests\tree</Filter>
     </ClInclude>
@@ -338,6 +311,39 @@
     </ClInclude>
     <ClInclude Include="structures\table\unsorted_sequence_table.h">
       <Filter>structures\table</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\bubble_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\heap_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\insert_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\merge_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\quick_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\radix_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\select_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\shell_sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\shuffle.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="structures\table\sorting\sort.h">
+      <Filter>structures\table\sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\sorting\sorting_test.h">
+      <Filter>tests\sorting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

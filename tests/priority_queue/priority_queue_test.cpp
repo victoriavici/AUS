@@ -208,72 +208,80 @@ namespace tests
             two->push(rand() % 100000 + 1, rand() % 100);
         }
 
-        long pocet = 0;
-        long pu = 0;
+        long pocet;
+        long pu ;
         long po = 0;
         long pe = 0;
         int kam;
-        do {
-           
 
-            switch ((rand() % 3))
-            {
-            case 0:
-                if (pu < (100000 * ppu)) {
-                    int priority = rand() % 100000 +1;
-                    SimpleTest::startStopwatch();
-                    heap->push(priority,pocet);
-                    SimpleTest::stopStopwatch();
-                    aTime += SimpleTest::getElapsedTime();
+        for (int i = 0; i < 5; i++)
+        {
+            pocet = 0;
+            pu = 0;
+            po = 0;
+            pe = 0;
+            kam;
 
-                    SimpleTest::startStopwatch();
-                    two->push(priority, pocet);
-                    SimpleTest::stopStopwatch();
-                    lTime += SimpleTest::getElapsedTime();
+            do {
+                switch ((rand() % 3))
+                {
+                case 0:
+                    if (pu < (100000 * ppu)) {
+                        int priority = rand() % 100000 + 1;
+                        SimpleTest::startStopwatch();
+                        heap->push(priority, pocet);
+                        SimpleTest::stopStopwatch();
+                        aTime += SimpleTest::getElapsedTime();
 
-                    pu++;
-                    pocet++;
+                        SimpleTest::startStopwatch();
+                        two->push(priority, pocet);
+                        SimpleTest::stopStopwatch();
+                        lTime += SimpleTest::getElapsedTime();
+
+                        pu++;
+                        pocet++;
+                    }
+                    break;
+                case 1:
+                    if (po < (100000 * ppo)) {
+                        SimpleTest::startStopwatch();
+                        heap->pop();
+                        SimpleTest::stopStopwatch();
+                        aTime += SimpleTest::getElapsedTime();
+
+                        SimpleTest::startStopwatch();
+                        two->pop();
+                        SimpleTest::stopStopwatch();
+                        lTime += SimpleTest::getElapsedTime();
+
+                        po++;
+                        pocet++;
+                    }
+                    break;
+                case 2:
+                    if (pe < (100000 * ppe)) {
+                        SimpleTest::startStopwatch();
+                        heap->peek();
+                        SimpleTest::stopStopwatch();
+                        aTime += SimpleTest::getElapsedTime();
+
+                        SimpleTest::startStopwatch();
+                        two->peek();
+                        SimpleTest::stopStopwatch();
+                        lTime += SimpleTest::getElapsedTime();
+
+                        pe++;
+                        pocet++;
+                    }
+                    break;
+                default:
+                    break;
                 }
-                break;
-            case 1:
-                if (po < (100000 * ppo)) {
-                    SimpleTest::startStopwatch();
-                    heap->pop();
-                    SimpleTest::stopStopwatch();
-                    aTime += SimpleTest::getElapsedTime();
 
-                    SimpleTest::startStopwatch();
-                    two->pop();
-                    SimpleTest::stopStopwatch();
-                    lTime += SimpleTest::getElapsedTime();
-
-                    po++;
-                    pocet++;
-                }
-                break;
-            case 2:
-                if (pe < (100000 * ppe)) {
-                    SimpleTest::startStopwatch();
-                    heap->peek();
-                    SimpleTest::stopStopwatch();
-                    aTime += SimpleTest::getElapsedTime();
-
-                    SimpleTest::startStopwatch();
-                    two->peek();
-                    SimpleTest::stopStopwatch();
-                    lTime += SimpleTest::getElapsedTime();
-
-                    pe++;
-                    pocet++;
-                }
-                break;
-            default:
-                break;
-            }
-
-        } while (pocet != 100000);
-        structures::Logger::getInstance().logDuration(heap->size(), aTime, "Dåžka trvania Heap - " + SimpleTest::getName());
-        structures::Logger::getInstance().logDuration(two->size(), lTime, "Dåžka trvania PriorityQueueTwoLists - " + SimpleTest::getName());
+            } while (pocet != 100000);
+        }
+        structures::Logger::getInstance().logDuration(heap->size(), aTime/5, "Priemerna dåžka trvania Heap - " + SimpleTest::getName());
+        structures::Logger::getInstance().logDuration(two->size(), lTime/5, "Priemerná dåžka trvania PriorityQueueTwoLists - " + SimpleTest::getName());
         delete heap;
         delete two;
     
@@ -356,7 +364,7 @@ namespace tests
                     SimpleTest::stopStopwatch();
 
                     structures::Logger::getInstance().logDuration(two->size(), SimpleTest::getElapsedTime(), "Dåžka trvania priorityQueueTwoLists Push");
-                }
+           }
             
             delete two;
         

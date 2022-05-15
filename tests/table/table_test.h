@@ -149,4 +149,83 @@ namespace tests
 	public:
 		TableTestOverall();
 	};
+
+
+	//1.uloha
+	class TableTest
+		: public ComplexTest
+	{
+	public:
+		TableTest();
+	};
+
+	class BST
+		:public SimpleTest
+	{
+	public:
+		BST();
+		void test() override;
+	};
+
+	class SST
+		:public SimpleTest
+	{
+	public:
+		SST();
+		void test() override;
+	};
+
+	//2.uloha
+	class ScenareTable :
+		public SimpleTest {
+	public:
+		ScenareTable(const char* nazov);
+		void testScenar(double ppi, double ppr, double ppt);
+	};
+
+	class ScenarTA :
+		public ScenareTable {
+	public:
+		ScenarTA();
+		void test() override;
+	};
+	class ScenarTB :
+		public ScenareTable {
+	public:
+		ScenarTB();
+		void test() override;
+	};
+	class ScenareSpustacTable
+		: public ComplexTest
+	{
+	public:
+		ScenareSpustacTable();
+	};
+
+//3.UlohA
+
+	class ZlozitostiTable :
+		public ComplexTest {
+	public:
+		ZlozitostiTable();
+	};
+	class InsertT :
+		public SimpleTest {
+	public:
+
+		InsertT();
+		void test() override;
+	};
+	class Remove :
+		public SimpleTest {
+	public:
+		Remove();
+		void test() override;
+	};
+	class TryFind :
+		public SimpleTest {
+	public:
+		TryFind();
+		void test() override;
+	};
 }
