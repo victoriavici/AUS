@@ -340,7 +340,7 @@ namespace tests
 		
 
 		int p = 1;
-		/*srand(time(0));
+		srand(time(0));
 		auto sst = new structures::SortedSequenceTable<int,int>();
 		
 		for (int k = 0; k < 1000000; k+=1000)
@@ -362,38 +362,9 @@ namespace tests
 			}
 			structures::Logger::getInstance().logDuration(sst->size(),cas/10, "Dåžka trvania SST tryFind");
 		}
-		delete sst;*/
+		delete sst;
 
-	/*	
-		int max = 0;
-		for (int k = 1000; k < 100000; k += 1000)
-		{
-			auto bst = new structures::BinarySearchTree<int, int>();
-			bst->insert(k, 1);
-
-			for (int i = 1; i < k; i += 10)
-			{
-				do {
-					p = rand() % i;
-				} while (bst->containsKey(p));
-				bst->insert(p, p);
-				if (p > max) 
-					max = p;
-				
-			}
-			if (!bst->containsKey(0))
-				bst->insert(0, 0);
-			
-			SimpleTest::startStopwatch();
-			int data = 0;
-			bst->tryFind(0,data);
-			SimpleTest::stopStopwatch();
-
-			structures::Logger::getInstance().logDuration(bst->size(), SimpleTest::getElapsedTime(), "Dåžka trvania BST tryFind");
-			delete bst;
-
-		}
-		*/
+	
 
 		auto bst = new structures::BinarySearchTree<int, int>();
 		int min = INT_MAX;
@@ -451,33 +422,33 @@ namespace tests
 
 		
 
-		//auto bst = new structures::BinarySearchTree<int, int>();
-		//int min = INT_MAX;
-		//int p = 0;
-		//for (size_t i = 0; i < 1000; i++)
-		//{
-		//	for (size_t j = 0; j < 100; j++)
-		//	{
-		//		do
-		//		{
-		//			p = ((rand() % 1000) * (rand() % 1000));
-		//		} while (bst->containsKey(p));
-		//		bst->insert(p, p);
-		//		if (p < min)
-		//			min = p;
-		//	}
-		//	Milliseconds time(0);
-		//	for (size_t j = 0; j < 10; j++)
-		//	{
-		//		SimpleTest::startStopwatch();
-		//		bst->remove(min);
-		//		SimpleTest::stopStopwatch();
-		//		time += SimpleTest::getElapsedTime();
-		//		bst->insert(min, min);
-		//	}
-		//	structures::Logger::getInstance().logDuration(bst->size(), time/10, "Dåžka trvania BST remove");
-		//}
-		//delete bst;
+		auto bst = new structures::BinarySearchTree<int, int>();
+		int min = INT_MAX;
+		int p = 0;
+		for (size_t i = 0; i < 1000; i++)
+		{
+			for (size_t j = 0; j < 100; j++)
+			{
+				do
+				{
+					p = ((rand() % 1000) * (rand() % 1000));
+				} while (bst->containsKey(p));
+				bst->insert(p, p);
+				if (p < min)
+					min = p;
+			}
+			Milliseconds time(0);
+			for (size_t j = 0; j < 10; j++)
+			{
+				SimpleTest::startStopwatch();
+				bst->remove(min);
+				SimpleTest::stopStopwatch();
+				time += SimpleTest::getElapsedTime();
+				bst->insert(min, min);
+			}
+			structures::Logger::getInstance().logDuration(bst->size(), time/10, "Dåžka trvania BST remove");
+		}
+		delete bst;
 	}
 
 
@@ -510,58 +481,6 @@ namespace tests
 			delete sst;
 		}
 
-		/*srand(time(0));
-		auto sst = new structures::SortedSequenceTable<int, int>();
-		int pom = 10000000;
-		for (int k = 9900000; k >= 0; k -= 100000)
-		{
-
-			for (int i = pom ; i > k; i--)
-			{
-				sst->insert(i, i);
-			}
-		
-				SimpleTest::startStopwatch();
-				sst->insert(k, k);
-				SimpleTest::stopStopwatch();
-				sst->remove(k);
-				pom = 
-				structures::Logger::getInstance().logDuration(sst->size(), SimpleTest::getElapsedTime(), "Dåžka trvania SST insert");
-
-		}
-		delete sst;*/
-
-		/*
-		int p;
-		int min = INT_MAX;
-		auto bst = new structures::BinarySearchTree<int, int>();
-		for (int j = 100; j < 10000; j += 100) {
-
-			for (int i = 0; i < 100; i++)
-			{
-				do {
-					p = rand() % j;
-				} while (bst->containsKey(p));
-				bst->insert(p, p);
-				if (p < min)
-					min = p;
-			}
-
-			Milliseconds ltime(0);
-			for (int i = 0; i < 10; i++)
-			{
-				SimpleTest::startStopwatch();
-				bst->insert(min - 1, 1 );
-				SimpleTest::stopStopwatch();
-				bst->remove(min - 1);
-				ltime += SimpleTest::getElapsedTime();
-			}
-
-			structures::Logger::getInstance().logDuration(bst->size(), ltime , "Dåžka trvania BST insert");
-			
-		}
-		delete bst;*/
-		
 
 		auto bst = new structures::BinarySearchTree<int, int>();
 		int min = INT_MAX;

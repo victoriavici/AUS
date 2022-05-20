@@ -223,8 +223,6 @@ namespace structures
 		else {
 			throw std::logic_error("Nenašiel sa");
 		}
-
-
 	}
 
 	template<typename K, typename T>
@@ -336,7 +334,12 @@ namespace structures
 		BSTTreeNode* replaceNode = nullptr;
 		switch (node->degree()) {
 		case 1:
-			replaceNode = node->hasLeftSon() ? node->changeLeftSon(nullptr) : node->changeRightSon(nullptr);
+			if (node->hasLeftSon()) {
+				replaceNode = node->changeLeftSon(nullptr);
+			}
+			else {
+				replaceNode = node->changeRightSon(nullptr);
+			}
 			break;
 		case 2:
 			replaceNode = node->getRightSon();
@@ -346,6 +349,9 @@ namespace structures
 			extractNode(replaceNode);
 			replaceNode->changeLeftSon(node->changeLeftSon(nullptr));
 			replaceNode->changeRightSon(node->changeRightSon(nullptr));
+			break;
+		default:
+			break;
 		}
 		if (node->isRoot()) {
 			binaryTree_->replaceRoot(replaceNode);
@@ -361,7 +367,6 @@ namespace structures
 		if (replaceNode != nullptr) {
 			replaceNode->setParent(parent);
 		}
-		
 	}
 
 	

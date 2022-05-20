@@ -33,9 +33,9 @@ namespace structures
 		auto lavy = min;
 		auto pravy = max;
 		do {
-			if (table.getItemAtIndex(lavy).getKey() < pivot)
+			while (table.getItemAtIndex(lavy).getKey() < pivot)
 				lavy++;
-			if (table.getItemAtIndex(pravy).getKey() > pivot)
+			while (table.getItemAtIndex(pravy).getKey() > pivot)
 				pravy--;
 			if (lavy <= pravy) {
 				table.swap(lavy, pravy);
@@ -43,17 +43,9 @@ namespace structures
 				pravy--;
 			}
 		} while (lavy <= pravy);
-		if (lavy <= pravy) {
-			if (min < pravy)
-				quick(table,min, pravy);
-			if (lavy < max) {
-				quick(table,lavy, max);
-			}
-		}
-			
-
+		if (min < pravy)
+			quick(table,min, pravy);
+		if (lavy < max) 
+			quick(table,lavy, max);
 	}
-
-	
-
 }
